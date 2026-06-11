@@ -1,0 +1,82 @@
+@model ProductDetailViewModel
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="product-detail-page">
+    <div class="mb-3">
+        <a asp-action="Index" class="text-decoration-none small">&larr; Back to Products</a>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-5">
+            <div class="product-card-image bg-light rounded-3 d-flex align-items-center justify-content-center">
+                @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+                {
+                    <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid product-card-img rounded-3" />
+                }
+                else
+                {
+                    <span class="text-muted">No image available</span>
+                }
+            </div>
+        </div>
+
+        <div class="col-lg-7">
+            <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="badge text-bg-light border">@Model.CategoryName</span>
+                <span class="badge @ProductDisplayHelper.GetStockBadgeClass(Model.StockStatus)">@Model.StockStatus</span>
+            </div>
+
+            <h1 class="display-6 fw-semibold">@Model.Name</h1>
+            <p class="text-muted mb-2">Brand: @Model.BrandName</p>
+            <p class="fs-4 fw-semibold mb-2">@ProductDisplayHelper.FormatVnd(Model.Price)</p>
+            <p class="text-muted mb-4">Stock quantity: @Model.StockQuantity</p>
+
+            @if (!string.IsNullOrWhiteSpace(Model.Description))
+            {
+                <p class="mb-4">@Model.Description</p>
+            }
+
+            <div class="d-flex flex-wrap gap-2 mb-4">
+                <button type="button" class="btn btn-outline-secondary" disabled title="Coming soon">Add to Build</button>
+                <button type="button" class="btn btn-outline-secondary" disabled title="Coming soon">Add to Cart</button>
+                <a asp-controller="AiAdvisor" asp-action="Index" class="btn btn-outline-primary">
+                    Ask AI About This Product
+                </a>
+            </div>
+
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h2 class="h5 fw-semibold mb-3">Specifications</h2>
+                    @if (Model.Specifications.Count == 0)
+                    {
+                        <p class="text-muted mb-0">No specifications available.</p>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-sm mb-0">
+                                <tbody>
+                                    @foreach (var spec in Model.Specifications)
+                                    {
+                                        <tr>
+                                            <th scope="row" class="text-muted fw-normal" style="width: 35%;">@spec.SpecKey</th>
+                                            <td>
+                                                @spec.SpecValue
+                                                @if (!string.IsNullOrWhiteSpace(spec.Unit))
+                                                {
+                                                    <span class="text-muted">@spec.Unit</span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

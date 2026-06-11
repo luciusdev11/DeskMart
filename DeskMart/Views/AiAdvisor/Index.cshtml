@@ -1,0 +1,63 @@
+@{
+    ViewData["Title"] = "AI Advisor";
+}
+
+<div class="ai-advisor-page">
+    <div class="mb-4">
+        <h1 class="display-6 fw-semibold">DeskMart AI Advisor</h1>
+        <p class="text-muted mb-0">
+            Ask DeskMart AI Advisor for PC component guidance, build suggestions, compatibility advice, and stock-aware recommendations.
+        </p>
+    </div>
+
+    <div id="aiAdvisorAlert" class="alert alert-danger d-none" role="alert"></div>
+
+    <div id="aiAdvisorChat" class="ai-advisor-chat border rounded-3 bg-light p-3 mb-3" aria-live="polite" aria-relevant="additions">
+        <div class="text-muted small text-center py-4" id="aiAdvisorEmptyState">
+            Your conversation will appear here. Ask a question or pick a suggested prompt below.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="aiAdvisorInput" class="form-label fw-semibold">Your question</label>
+        <textarea
+            id="aiAdvisorInput"
+            class="form-control"
+            rows="3"
+            maxlength="2000"
+            placeholder="Example: What GPU should I pair with a Ryzen 5 7600 for 1080p gaming?"></textarea>
+        <div class="form-text">AI Advisor uses available DeskMart product data when possible.</div>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2 mb-3">
+        <button type="button" class="btn btn-outline-secondary btn-sm ai-advisor-chip" data-prompt="Build me a gaming PC under 20 million VND">
+            Build me a gaming PC under 20 million VND
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-sm ai-advisor-chip" data-prompt="Is RTX 4060 good for 1080p gaming?">
+            Is RTX 4060 good for 1080p gaming?
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-sm ai-advisor-chip" data-prompt="Check my build compatibility">
+            Check my build compatibility
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-sm ai-advisor-chip" data-prompt="Recommend an alternative GPU">
+            Recommend an alternative GPU
+        </button>
+        <button type="button" class="btn btn-outline-secondary btn-sm ai-advisor-chip" data-prompt="Find parts that are currently in stock">
+            Find parts that are currently in stock
+        </button>
+    </div>
+
+    <div class="d-flex align-items-center gap-3">
+        <button type="button" id="aiAdvisorSubmit" class="btn btn-primary">
+            Ask AI Advisor
+        </button>
+        <div id="aiAdvisorLoading" class="text-muted small d-none">
+            <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+            Thinking...
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/ai-advisor.js" asp-append-version="true"></script>
+}

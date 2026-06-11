@@ -1,0 +1,53 @@
+## Build / IDE
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+.vs/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.rsuser
+
+## .NET
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.nupkg
+*.snupkg
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+TestResults/
+[Bb]uild[Ll]og.*
+*.DotSettings.user
+
+## ASP.NET Core / config secrets
+.env
+.env.*
+!.env.example
+env.local
+!DeskMart/env.example
+appsettings.local.json
+appsettings.*.local.json
+**/appsettings.Development.local.json
+secrets.json
+
+## OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+## Cursor / agents (optional local tooling)
+.cursor/
+
+## SQL / local data dumps (keep tracked import scripts at repo root)
+*.bak
+*.mdf
+*.ldf
