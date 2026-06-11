@@ -45,9 +45,21 @@ Thumbs.db
 Desktop.ini
 
 ## Cursor / agents (optional local tooling)
+.agents/
 .cursor/
+.cursorignore
+.cursorrules
+.cursorconfig
+.cursorignore
+.cursorrules
+.cursorconfig
+.cursorignore
+.cursorrules
+.cursorconfig
 
 ## SQL / local data dumps (keep tracked import scripts at repo root)
 *.bak
 *.mdf
 *.ldf
+
+.agents/
